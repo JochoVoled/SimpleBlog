@@ -6,24 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SimpleBlog.Controllers
 {
-    public class HomeController : Controller
+    public class BlogController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ListView()
         {
             return View();
         }
 
-        public IActionResult About()
+        // Search, filters ListView based on query
+        [HttpGet]
+        public IActionResult ListView(string query)
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
-
-        public IActionResult Contact()
+        public IActionResult PostView()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
