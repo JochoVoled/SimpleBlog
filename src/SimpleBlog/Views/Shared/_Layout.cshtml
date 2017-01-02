@@ -17,38 +17,36 @@
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     @*<span class="icon-bar"></span>
-                    <span class="icon-bar"></span>*@
+                        <span class="icon-bar"></span>*@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SimpleBlog</a>
             </div>
             <div class="navbar-collapse collapse">
                 <div class="nav navbar-nav">
                     @* todo figure out how to send back search parameter to controller *@
-                    <form asp-controller="Blog" asp-action="ListView">
-                        <input type="search" id="blogSearch"/>
-                        <input type="submit" Value="Search"/>
-                    </form>
+
                     @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+    </nav>
+    <main class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2016 - SimpleBlog</p>
-        </footer>
-    </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2016 - SimpleBlog</p>
+    </footer>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

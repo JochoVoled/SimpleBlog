@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SimpleBlog.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SimpleBlog
 {
@@ -25,6 +27,8 @@ namespace SimpleBlog
         {
             // Add framework services.
             services.AddMvc();
+            var conn = @"Server=(localdb)\mssqllocaldb;Database=SimpleBlog;Trusted_Connection=True";
+            services.AddDbContext<BlogDbContext>(opt => opt.UseSqlServer(conn));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -28,6 +28,9 @@ textarea {
 {
     width: 100%;
 }
+form input, form select, form button {
+    display: block;
+}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

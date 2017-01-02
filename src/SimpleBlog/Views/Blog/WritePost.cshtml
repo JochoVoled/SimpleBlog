@@ -1,0 +1,12 @@
+﻿@model SimpleBlog.ViewModels.WritePostViewModel
+<div>@Model.Message</div>
+<form asp-controller="Blog" asp-action="CreatePost" asp-route-post="@Model.Post" method="post">
+    <label asp-for="Post.Title">Title</label>
+    <input asp-for="Post.Title" type="text"/>
+    <br/>
+    <textarea asp-for="Post.Content" cols="200" rows="20"></textarea>
+    <select asp-for="Post.CategoryId" asp-items="@Model.Categories"></select> 
+    @* todo double-check how to fill option label from SelectListItem *@
+    <input type="submit" value="Publish"/>
+</form>
+<div asp-validation-summary="All"></div>
