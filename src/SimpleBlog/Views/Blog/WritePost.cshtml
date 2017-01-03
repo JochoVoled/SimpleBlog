@@ -1,12 +1,13 @@
 ﻿@model SimpleBlog.ViewModels.WritePostViewModel
-<div>@Model.Message</div>
-<form asp-controller="Blog" asp-action="CreatePost" asp-route-post="@Model.Post" method="post">
-    <label asp-for="Post.Title">Title</label>
-    <input asp-for="Post.Title" type="text"/>
+
+<form asp-controller="Blog" asp-action="WritePost" asp-route-post="@Model.Post" method="post">
+    <label asp-for="@Model.Post.Title">Title</label>
+    <input asp-for="@Model.Post.Title" type="text"/>
+    <span class="error" asp-validation-for="@Model.Post.Title"></span>
     <br/>
-    <textarea asp-for="Post.Content" cols="200" rows="20"></textarea>
-    <select asp-for="Post.CategoryId" asp-items="@Model.Categories"></select> 
-    @* todo double-check how to fill option label from SelectListItem *@
+
+    <textarea asp-for="@Model.Post.Content" cols="200" rows="20"></textarea>
+    <select asp-for="@Model.Post.CategoryId" asp-items="@Model.Categories"></select>
+    <span class="error" asp-validation-for="@Model.Post.Content"></span>
     <input type="submit" value="Publish"/>
 </form>
-<div asp-validation-summary="All"></div>

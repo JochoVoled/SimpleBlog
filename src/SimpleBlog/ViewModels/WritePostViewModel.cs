@@ -7,7 +7,6 @@ namespace SimpleBlog.ViewModels
     public class WritePostViewModel
     {
         public Post Post { get; set; }
-        public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
-        public string Message { get; set; } = string.Empty;
+        public List<SelectListItem> Categories { get; } = new List<SelectListItem>();
     }
 }

@@ -31,6 +31,11 @@ textarea {
 form input, form select, form button {
     display: block;
 }
+.error {
+    color: red;
+    font-weight: bold;
+    display: block;
+}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

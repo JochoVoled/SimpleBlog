@@ -15,7 +15,6 @@ namespace SimpleBlog.Controllers
         {
             _context = context;
         }
-        // Search, filters ListView based on query
         [HttpGet]
         public IActionResult ListView(string query)
         {
@@ -44,7 +43,7 @@ namespace SimpleBlog.Controllers
             return View();
         }
 
-        public IActionResult WritePost(string error)
+        public IActionResult WritePost()
         {
             WritePostViewModel model = new WritePostViewModel();
             foreach (var category in _context.Categories)
@@ -55,29 +54,32 @@ namespace SimpleBlog.Controllers
                     Text = category.Name
                 });
             }
-            if (!string.IsNullOrEmpty(error))
-            {
-                model.Message = error;
-            }
             return View(model);
         }
 
-        public void CreatePost(Post post)
+        [HttpPost]
+        public IActionResult WritePost(Post post)
         {
-            //post.Category = _context.Categories.First(cat => cat.Id == post.CategoryId);
-            //return View("PostView", post);
             post.PostDate = DateTime.Now;
-            //AddToContext(post);
-            //ListView(null);
-            try
+            if (ModelState.IsValid)
             {
                 _context.Posts.Add(post);
                 _context.SaveChanges();
-                ListView(null);
+                return RedirectToAction("ListView");
             }
-            catch
+            else
             {
-                WritePost("Posting failed");
+                WritePostViewModel model = new WritePostViewModel();
+                foreach (var category in _context.Categories)
+                {
+                    model.Categories.Add(new SelectListItem
+                    {
+                        Value = category.Id.ToString(),
+                        Text = category.Name
+                    });
+                }
+                model.Post = post;
+                return View("WritePost",model);
             }
         }
     }
